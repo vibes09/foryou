@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="heart.css"/>
+    <link rel="stylesheet" href="card.css"/>
+    <link rel="stylesheet" href="button.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <title>One rose for you</title>
+</head>
+<body>
+    <audio id="myAudio">
+        <source src="music.mp3" type="audio/mpeg">
+      </audio>
+    <div class="container">
+        <a href="#" onclick="startScript()">
+            <span>Hi!</span>
+            <span>Click here!</span>
+        </a>
+    </div>
+    <div class="heart-container"></div>
+    <div class="card">
+        <div class="imgBox">
+            <img src="image.jpg" alt=""/>
+            <img src="image2.jpg" alt=""/>
+        </div>
+        <div class="details">
+            <div class="content">
+                <h2>Gửi <span>Nguyên</span></h2>
+                <br>
+                <p>Nhân dịp ngày quốc tế phụ nữ, gửi đến em những lời chúc tốt đẹp và đầy ý nghĩa. Trong năm nay, khi em chuẩn bị bước vào một chặng đường mới trong sự nghiệp, 
+                    anh tin rằng em sẽ thành công. Sự nỗ lực và lòng kiên nhẫn của em sẽ mở ra những cánh cửa mới và mang lại những cơ hội tốt đẹp. 
+                    Hãy luôn tin vào bản thân và nhớ rằng anh luôn ở bên cạnh, sẵn sàng ủng hộ và động viên em trên mọi bước đường. Hãy cứ tiến lên, 
+                    không ngừng bước đi và luôn giữ vững niềm tin vào chính mình. Chúc em ngày Quốc tế Phụ nữ tràn đầy hạnh phúc và thành công trong tất cả những gì em làm.</p>
+                <br>
+                <h2 style="text-align: right !important">
+                    Love you!
+                </h2>
+                <p style="text-align: right;">From July boy</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js" integrity="sha512-aNMyYYxdIxIaot0Y1/PLuEu3eipGCmsEUBrUq+7aVyPGMFH8z0eTP0tkqAvv34fzN6z+201d3T8HPb1svWSKHQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        function startScript(){
+            let audio = document.getElementById("myAudio");
+            audio.play();
+            let container = document.querySelector(".container");
+            anime({
+                targets: ".container",
+                opacity: 0,
+                duration: 1000,
+                complete: function(){
+                    container.style.display = "none";
+                    showHeartAndCard();
+                }
+            })
+        }
+        function showHeartAndCard(){
+            animateHearts();
+            let hearts = document.querySelectorAll(".heart");
+            hearts.forEach(function(heart){
+                heart.classList.add("heart-shadow");
+                heart.classList.add("heart-right-shadow");
+                heart.classList.add("heart-left-shadow");
+            });
+            let container = document.querySelector(".heart-container");
+            anime({
+                targets: ".heart-container",
+                opacity: 1,
+                duration: 2000,
+                complete: function(){
+                    container.style.background = "#e80202";
+                    let card = document.querySelector(".card");
+                    card.style.display = "flex";
+                    anime({
+                        targets: ".card",
+                        opacity: 1,
+                        duration: 500,
+                        complete: function(){
+                            setTimeout(function(){
+                                card.classList.add('card-active-hover')
+                            }, 2500)
+                        }
+                    })
+                }
+            })
+        }
+    </script>
+    <script>
+        // create a lot of heart
+        const container = document.querySelector(".heart-container");
+        for(var i = 1; i <= 100; i++){
+            const hearts = document.createElement('div');
+            hearts.classList.add('heart');
+            container.appendChild(hearts);
+        }
+
+        // make the animation
+        function animateHearts(){
+            anime({
+                targets: '.heart',
+                translateX: function(){
+                    return anime.random(-1000, 1000)
+                },
+                translateY: function(){
+                    return anime.random(-700, 700)
+                },
+                rotate: 45,
+                scale: function(){
+                    return anime.random(1, 8)
+                },
+                easing: 'easeInOutBack',
+                duration: 3000,
+                delay: anime.stagger(10),
+                complete: animateHearts
+            })
+        }
+    </script>
+</body>
+</html>

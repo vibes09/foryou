@@ -1,0 +1,84 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.card {
+    display: none;
+    opacity: 0;
+    z-index: 1;
+    position: relative;
+    width: 500px;
+    height: 600px;
+    background-color: #fff;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    box-shadow: 10px 20px 40px rgba(0, 0, 0, .25);
+    transition: 1s;
+}
+.card-active-hover:hover {
+    transform: translateX(50%);
+
+}
+
+.card .imgBox{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transition: 1s;
+}
+
+.card-active-hover:hover .imgBox {
+    transform: rotateY(-180deg);
+}
+
+.card .imgBox img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.card .imgBox img:nth-child(2) {
+    transform: rotateY(-180deg);
+}
+
+.card .details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.card .details .content {
+    display: flex;
+    font-family: sans-serif;
+    flex-direction: column;
+}
+
+.card .details .content h2{
+    font-size: 1.4em;
+}
+
+.card .details .content h2 span {
+    font: 400 130px/0.8 "Great Vibes", Helvetica, sans-serif;
+    font-size: 2.8em;
+}
+
+.card .details .content p {
+    font-size: 1.4em;
+    font-family: sans-serif;
+}

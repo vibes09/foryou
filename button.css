@@ -1,0 +1,72 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #fff;
+}
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container a {
+    border: 1px solid #e80202;
+    background: #fff;
+    position: relative;
+    width: 150px;
+    height: 55px;
+    text-align: center;
+    line-height: 55px;
+    margin: 10px;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 2px;
+    color: #e80202;
+    transition: 0.4s ease-in;
+    overflow: hidden;
+}
+
+.container a span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    z-index: 100000;
+    transition: 0.4s ease-in;
+}
+
+.container a:hover span {
+    color: #fff;
+    transition: 0.4s ease-in;
+    transform: translateY(-100%);
+}
+
+.container a:before{
+    width: 250px;
+    height: 250px;
+    background: #e80202;
+    content: '';
+    position: absolute;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    bottom: -250px;
+    left: 50%;
+    transition: 0.4s ease-in;
+}
+
+.container a:hover:before{
+    bottom: -150px;
+}
+
+.container a:nth-child(2):before{
+    bottom: 60px;
+}
+
+#myAudio {
+    display: none;
+}
